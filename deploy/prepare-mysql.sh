@@ -34,7 +34,6 @@ echo $destinationIp
 sleep 15
 docker exec -i $container bash -c "mysql -uroot -pmypassword --execute=\"GRANT ALL ON *.* TO root@'$sourceIp' IDENTIFIED BY 'mypassword';FLUSH PRIVILEGES;\""
 
-echo " - - vso[task.setvariable variable=container]$container"
 echo "##vso[task.setvariable variable=container]$container"
 echo "##vso[task.setvariable variable=MySQLIp]$destinationIp"
 
