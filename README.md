@@ -28,21 +28,21 @@ Run the MySQL container and wait for it to be ready, when it has started allow r
 
 ## Step 3
 
-- task: ShellScript@2
+`- task: ShellScript@2
   displayName: 'create empty database'  
   inputs:
     scriptPath: 'deploy/runscript.sh'
-    args: 'sql/db.sql $(MySQLIp)'
+    args: 'sql/db.sql $(MySQLIp)'`
 
 Create an empty database
 
 ## Step 4
 
-- task: ShellScript@2
+`- task: ShellScript@2
   displayName: 'check empty database'  
   inputs:
     scriptPath: 'deploy/runscript.sh'
-    args: 'sql/check.sql $(MySQLIp)'
+    args: 'sql/check.sql $(MySQLIp)'`
   
 Run some cool script
 
