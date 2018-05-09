@@ -1,0 +1,31 @@
+resources:
+- repo: self
+queue:
+  name: Hosted Linux Preview
+  demands: sh
+
+steps:
+
+- task: CmdLine@1
+  displayName: 'install mysql client'
+  inputs:
+    filename: sh
+    arguments: '-c "apt-get install mysql-client"'
+
+- task: ShellScript@2
+  displayName: 'run MySQL'
+  inputs:
+    scriptPath: 'deploy/prepare-mysql.sh'
+
+- task: ShellScript@2
+  displayName: 'create empty database'  
+  inputs:
+    scriptPath: 'deploy/runscript.sh'
+    args: 'sql/db.sql $(MySQLIp)'
+
+- task: ShellScript@2
+  displayName: 'check empty database'  
+  inputs:
+    scriptPath: 'deploy/runscript.sh'
+    args: 'sql/check.sql $(MySQLIp)'
+  
